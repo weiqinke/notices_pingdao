@@ -1,0 +1,59 @@
+syntax = "proto3";
+
+package notices_module_pingdao;
+
+service NoticeService {
+  rpc GetTemplateNotices (TempType) returns (NoticesTemp);
+  rpc AllPlacard (FilterType) returns (PlacardsList);
+}
+
+
+message PlacardsList {
+  int32 code = 1;
+  string message = 2;
+  repeated Placard data = 3;
+}
+
+message Placard{
+  int32 id = 1;
+  int32 status = 2;
+  string placardid = 3;
+  string origin = 4;
+  string title = 5;
+  string type = 6;
+  string description = 7;
+  string avatar = 8;
+}
+
+message FilterType{
+  string type = 1;
+  string uid = 2;
+  string status = 3;
+}
+
+message TempType {
+  string type = 1;
+}
+
+message NoticesTemp {
+  int32 code = 1;
+  string message = 2;
+  repeated Notice data = 3;
+}
+
+message Notice{
+  int32 id = 1;
+  int32 isread = 2;
+  string origin = 3;
+  string noticeid = 4;
+  string originUid = 5;
+  string receiver = 6;
+  string receiverUid = 7;
+  string avatar = 8;
+  string title = 9;
+  string type = 10;
+  string description = 11;
+  string status = 12;
+  string extra = 13;
+  string created = 14;
+}
